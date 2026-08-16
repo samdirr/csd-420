@@ -33,3 +33,6 @@ target/
 
 # macOS metadata
 .DS_Store
+
+# Contains IntelliJ’s automatically compiled Java files
+out/
