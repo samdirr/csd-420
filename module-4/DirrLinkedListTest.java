@@ -7,10 +7,12 @@
  *
  * Results:
  * With 50,000 integers, Iterator traversal took 5.755 milliseconds and
- * get(index) traversal took 1,383.419 milliseconds. With 500,000 integers,
- * Iterator traversal took 8.337 milliseconds and get(index) traversal took
- * 424,139.560 milliseconds, or approximately 7 minutes and 4 seconds. These
- * times can vary by computer and JVM execution.
+ * get(index) traversal took 1,383.419 milliseconds, making get(index) about
+ * 240 times slower. With 500,000 integers, Iterator traversal took 8.337
+ * milliseconds and get(index) traversal took 424,139.560 milliseconds, or
+ * approximately 7 minutes and 4 seconds. For the larger list, get(index) was
+ * about 50,877 times slower than the Iterator. These times can vary by computer
+ * and JVM execution.
  *
  * The Iterator was much faster, especially when the list grew from 50,000 to
  * 500,000 elements. An Iterator moves directly from one node to the next, so
