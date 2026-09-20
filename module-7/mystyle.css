@@ -1,0 +1,14 @@
+/* Sam Dirr | September 20, 2026 | CSD 420 Assignment 7.2
+   The shared class sets the defaults; each ID overrides only the fill. */
+.plaincircle {
+    -fx-fill: white;
+    -fx-stroke: black;
+}
+
+#redcircle {
+    -fx-fill: red;
+}
+
+#greencircle {
+    -fx-fill: green;
+}
