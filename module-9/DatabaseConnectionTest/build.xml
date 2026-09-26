@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CSD420-Module9-DatabaseTest" default="run" basedir=".">
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" release="21" includeantruntime="false" encoding="UTF-8"/>
+    </target>
+    <target name="run" depends="compile">
+        <java classname="DatabaseConnectionTest" fork="true" failonerror="true">
+            <classpath><pathelement location="build/classes"/><fileset dir="lib" includes="*.jar"/></classpath>
+        </java>
+    </target>
+    <target name="clean"><delete dir="build"/></target>
+    <target name="rebuild" depends="clean,compile"/>
+</project>
