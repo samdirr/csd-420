@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CSD420-Module10-FanManager" default="run" basedir=".">
+    <property name="db.url" value="jdbc:mysql://127.0.0.1:3307/databasedb?useSSL=false&amp;serverTimezone=UTC&amp;connectTimeout=5000&amp;socketTimeout=5000&amp;useAffectedRows=false"/>
+    <path id="app.classpath"><pathelement location="build/classes"/><fileset dir="lib" includes="*.jar"/></path>
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" release="21" includeantruntime="false" encoding="UTF-8"/>
+    </target>
+    <target name="run" depends="compile">
+        <java classname="FanManager" fork="true" failonerror="true">
+            <classpath refid="app.classpath"/><sysproperty key="fan.db.url" value="${db.url}"/>
+        </java>
+    </target>
+    <target name="compile-tests" depends="compile">
+        <mkdir dir="build/test-classes"/>
+        <javac srcdir="test" destdir="build/test-classes" release="21" includeantruntime="false" encoding="UTF-8"><classpath refid="app.classpath"/></javac>
+    </target>
+    <target name="test" depends="compile-tests">
+        <java classname="FanManagerTest" fork="true" failonerror="true">
+            <classpath refid="app.classpath"/><classpath><pathelement location="build/test-classes"/></classpath>
+            <sysproperty key="java.awt.headless" value="true"/>
+        </java>
+    </target>
+    <target name="integration-test" depends="compile-tests">
+        <java classname="JdbcFanStoreTest" fork="true" failonerror="true">
+            <classpath refid="app.classpath"/><classpath><pathelement location="build/test-classes"/></classpath>
+            <sysproperty key="fan.db.url" value="${db.url}"/>
+        </java>
+    </target>
+    <target name="clean"><delete dir="build"/></target>
+    <target name="rebuild" depends="clean,compile"/>
+</project>
